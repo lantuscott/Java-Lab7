@@ -13,11 +13,13 @@ public class TTTDump
 		return board;
 	}
 	
-	public static void main(String[] args)
-	{
-	// finish this: create new board through call to initBoard(),
-	//	then print out all 8 lines (3 rows, 3 columns, 2 diagonals)
+//	public static void main(String[] args)
+//	{
+//	 finish this: create new board through call to initBoard(),
+//		then print out all 8 lines (3 rows, 3 columns, 2 diagonals)
+// }
 
-	}
-
+	
 }
+
+

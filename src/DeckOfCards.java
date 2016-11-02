@@ -1,59 +1,66 @@
 
 public class DeckOfCards
 {
-	public int[] buildDeck(int[] deck)
+	
+	static String [] suits = 
+	{"Spades", "Hearts", "Clubs", "Diamonds"};
+	
+	static String [] ranks = 
+	{"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+	
+
+	public static int[] buildDeck()
 	{
-		deck = null;
-		return deck;
+		int[] newDeck = new int[52];
+		
+		// Initialize cards
+		for (int i = 0; i < newDeck.length; i++)
+			newDeck[i] = i;
+		
+		return newDeck;
 	}
 	
-	public void shuffle(int[] deck)
+	public static void shuffle(int[] deck)
 	{
 	// notice how assigning to deck[i] affects actual param contents!
-		
+		// Shuffle the cards
+				for (int i = 0; i < deck.length; i++)
+				{
+					// Generate an index randomly (sez Liang) but...
+					// ALERT! This is NOT a truly-random shuffle.
+					//	Details in class...
+					
+					int index = (int) (Math.random() * deck.length);
+					int temp = deck[i];
+					deck[i] = deck[index];
+					deck[index] = temp;
+				}
 	}
 	
 	public String getSuit (int card)
 	{
-		return "?";
+		return suits[card / 13];
 	}
 	
 	public String getRank (int card)
 	{
-		return "?";
+		return ranks [card % 13];
 	}
 	
 	public static void main(String[] args)
 	{
-		int[] deck = new int[52];
+		//create and initialize new desk
 		
-		String[] suits =
-		{ "Spades", "Hearts", "Clubs", "Diamonds" };
+		int[] deck = buildDeck();
 		
-		String[] ranks =
-		{ "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
-
-		// Initialize cards
-		for (int i = 0; i < deck.length; i++)
-			deck[i] = i;
-
-		// Shuffle the cards
-		for (int i = 0; i < deck.length; i++)
-		{
-			// Generate an index randomly (sez Liang) but...
-			// ALERT! This is NOT a truly-random shuffle.
-			//	Details in class...
-			
-			int index = (int) (Math.random() * deck.length);
-			int temp = deck[i];
-			deck[i] = deck[index];
-			deck[index] = temp;
-		}
-
+		// shuffle the cards
+		
+		shuffle(deck);
+		
 		// Display the first four cards
 		for (int i = 0; i < 4; i++)
 		{
-			String suit = suits[deck[i] / 13];
+			String suit = suits[deck[i] / 13]; 
 			String rank = ranks[deck[i] % 13];
 			System.out.println("Card number " + deck[i] + ": " + rank + " of " + suit);
 		}
